@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test Page</title>
+
+<!-- Mobile -->
+
+<link rel="stylesheet" href="css/jq/jquery.mobile-1.3.1.min.css" />
+<!-- Custom css -->
+	<link rel="stylesheet" href="css/jq/jqm-icon-pack-3.0.0-fa.css" />
+<script src="js/jq/jquery-1.9.1.min.js"></script>
+<script src="js/jq/jquery.mobile-1.3.1.min.js"></script>
+
+<!-- Google Maps -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&language=it"></script>
+
+<script type="text/javascript" src="js/addlocation.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
+
+
+<style type="text/css">
+#map-canvas {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+</style>
+
+<!-- <script type="text/javascript">
+	$(document).on('pagebeforeshow', '[data-role="page"]', function() {
+		$('<div>').attr({
+			'id' : 'userbar',
+			'data-role' : 'panel'
+		}).appendTo($(this));
+		$.mobile.activePage.find('#userbar').panel();
+	});
+
+	$(document).on('pagebeforehide', '[data-role="page"]', function() {
+		$(this).find($('#userbar')).remove();
+	});
+</script>
+ -->
+</head>
+<body>
+
+	<div id="home" data-role="page" data-transition="slide"
+		data-title="Home">
+		<div id="userbar" data-role="panel" data-theme="c">
+			<a id="linkHome" data-mini="true" data-theme="a" href="#home"
+				data-role="button" data-icon="search">Search</a>
+			<div id="newBar" data-role="controlgroup">
+
+				<a data-mini="true" href="#newloc" data-role="button"
+					data-icon="plus">Add Location</a> <a href="#newphoto"
+					data-mini="true" data-role="button" data-icon="plus">Add Photo</a>
+				<a href="index.html" data-mini="true" data-role="button"
+					data-icon="plus">Add Music</a>
+			</div>
+
+			<!-- 			<img id="Logo" src="images/travel.png"  width="200px" >
+			 -->
+
+			<a data-mini="true" data-theme="a" href="#" data-role="button"
+				data-icon="gear">Settings</a>
+		</div>
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#userbar" data-iconpos="notext" data-icon="bars">Menu</a>
+			<h1>MyApp</h1>
+		</div>
+		<div data-role="content">
+			<div class="content-primary">
+				<ul data-role="listview" data-inset="true"
+					data-split-icon="facebook" data-split-theme="d" data-filter="true"
+					data-filter-placeholder="Search your location...">
+					<li><a href="index.html"> <img
+							src="images/location/barcellona.jpg" />
+							<h3>Barcellona</h3>
+							<p>12-06-2011</p>
+					</a><a href="#purchase" data-rel="popup" data-position-to="window"
+						data-transition="pop">Purchase album</a></li>
+					<li><a href="index.html"> <img
+							src="images/location/venezia.jpg" />
+							<h3>Venezia</h3>
+							<p>117-09-2013</p>
+					</a> <a href="#purchase" data-rel="popup" data-position-to="window"
+						data-transition="pop">Purchase album</a></li>
+				</ul>
+			</div>
+
+
+		</div>
+	</div>
+	<div id="newloc" data-role="page" data-transition="slide"
+		data-title="Add Location">
+		<div id="userbar" data-role="panel" data-theme="c">
+			<a data-mini="true" data-theme="a" href="#home" data-role="button"
+				data-icon="search">Search</a>
+			<div id="newBar" data-role="controlgroup">
+				<a id="linknewLoc" data-role="button" data-mini="true"
+					href="#newloc" data-icon="plus">Add Location</a> <a
+					href="#newphoto" data-mini="true" data-role="button"
+					data-icon="plus">Add Photo</a> <a href="index.html"
+					data-mini="true" data-role="button" data-icon="plus">Add Music</a>
+			</div>
+
+			<!-- 			<img id="Logo" src="images/travel.png"  width="200px" >
+			 -->
+
+			<a id="linkSettings" data-mini="true" data-theme="a" href="#"
+				data-role="button" data-icon="gear">Settings</a>
+		</div>
+
+
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+
+			<a href="#userbar" data-iconpos="notext" data-icon="bars">Menu</a> <a
+				href="#home" data-iconpos="notext" data-icon="home">Home</a>
+			<h1>Add Location</h1>
+		</div>
+		<div data-role="content">
+			<form action="" method="post">
+
+				<fieldset>
+					<div data-role="fieldcontain">
+						<div class="ui-grid-a">
+							<div class="ui-block-b">
+								<label for="nameLocation">Location</label>
+							</div>
+							<div class="ui-block-b">
+								<input type="text" name="nameLocation" id="nameLocation"
+									data-inline="true" data-mini="true" />
+							</div>
+						</div>
+					</div>
+
+					<div id="map_canvas" style="height: 250px;"></div>
+
+					<div data-role="fieldcontain" class="ui-hide-label">
+
+						<label for="descriptionLocation">Like ...</label>
+						<textarea name="descriptionLocation" id="descriptionLocation">Like ...</textarea>
+					</div>
+					<input type="submit" value="Save" data-inline="true"
+						data-mini="true" data-theme="a" />
+
+				</fieldset>
+			</form>
+
+		</div>
+	</div>
+
+	<div id="newphoto" data-role="page" data-title="Add Photo">
+		<div id="userbar" data-role="panel" data-theme="b">
+			<div id="newBar" data-role="controlgroup">
+				<a data-mini="true" href="#newloc" data-role="button"
+					data-icon="plus">Add Location</a> <a href="#newphoto"
+					data-mini="true" data-role="button" data-theme="a" data-icon="plus">Add
+					Photo</a> <a href="index.html" data-mini="true" data-role="button"
+					data-icon="plus">Add Music</a>
+			</div>
+		</div>
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+
+			<a href="#userbar" data-iconpos="notext" data-icon="bars">Menu</a> <a
+				href="#home" data-iconpos="notext" data-icon="home">Home</a>
+			<h1>Add Photo</h1>
+		</div>
+		<div data-role="content">
+			<form action="" method="post">
+				<div data-role="fieldcontain">
+					<label for="name"> Photo</label> <input type="text" name="name"
+						id="name" value="" data-inline="true" />
+
+				</div>
+
+			</form>
+
+
+		</div>
+	</div>
+
+	<div id="viewloc" data-role="page" data-title="Add Photo">
+		<div data-role="header" data-theme="b" data-position="fixed">
+
+			<a href="#userbar" data-iconpos="notext" data-icon="bars">Menu</a> <a
+				href="#home" data-iconpos="notext" data-icon="home">Home</a>
+			<h1>Add Photo</h1>
+		</div>
+		<div data-role="content">
+			<form action="" method="post">
+				<div data-role="fieldcontain">
+					<label for="name"> Photo</label> <input type="text" name="name"
+						id="name" value="" data-inline="true" />
+
+				</div>
+
+			</form>
+
+
+		</div>
+	</div>
+
+</body>
+</html>
